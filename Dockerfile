@@ -60,8 +60,10 @@ ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
 # RUN     chown -R www-data:www-data /var/www
-COPY	vhosts /etc/apache2/sites-enabled
-COPY	ssl /etc/ssl
+# Copy needed files
+COPY	config/vhosts /etc/apache2/sites-enabled
+COPY	config/ssl /etc/ssl
+COPY	config/php /etc/php5/apache2/conf.d
 
 # disable default virtualhost
 #RUN a2dissite 000-default
