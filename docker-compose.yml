@@ -1,15 +1,23 @@
 ---
 biz-balance_mysql:
   build: mysql/
+  container_name: biz-balance_mysql
   ports:
     - 3306:3306
   volumes:
-    - /data/mysql:/var/lib/mysql
+    - /srv/mysql:/var/lib/mysql
+  networks:
+    static-network:
+      ipv4_address: 172.20.128.21
 
 biz-balance_apache:
   build: apache/
+  container_name: biz-balance_apache
   ports:
     - 80:80
     - 443:443
   volumes:
-    - /var/www/biz-balance:/var/www/biz-balance
+    - /srv/www:/var/www/biz-balance
+  networks:
+    static-network:
+      ipv4_address: 172.20.128.22
