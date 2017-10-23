@@ -2,9 +2,6 @@ FROM debian:jessie
 
 LABEL maintainer="service@biz-balance.de"
 
-# squeeze new mirrors
-#RUN echo "deb http://archive.debian.org/debian/ squeeze contrib main non-free" > /etc/apt/sources.list
-
 RUN apt-get update
 # Common packages
 RUN apt-get update && \
@@ -50,25 +47,24 @@ RUN pecl install mailparse-2.1.6
 RUN pecl install ssh2-beta
 RUN pecl install gnupg
 
-
-
-
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
-# RUN     chown -R www-data:www-data /var/www
 # Copy needed files
 COPY	config/vhosts /etc/apache2/sites-enabled
 COPY	config/ssl /etc/ssl
 COPY	config/php /etc/php5/apache2/conf.d
 
-# disable default virtualhost
-#RUN a2dissite 000-default
-
+# expose Apache port to a network
 EXPOSE 80
 EXPOSE 443
 
-CMD     ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+# open to mount
+VOLUME ["/var/www/", "/var/log/apache"]
+
+#CMD     ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+#CMD service apache2 start && tail -F /var/log/apache/error.log
+ENTRYPOINT service apache2 start && /bin/bash
