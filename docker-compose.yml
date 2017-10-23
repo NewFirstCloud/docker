@@ -1,0 +1,15 @@
+---
+biz-balance_mysql:
+  build: mysql/
+  ports:
+    - 3306:3306
+  volumes:
+    - /data/mysql:/var/lib/mysql
+
+biz-balance_apache:
+  build: apache/
+  ports:
+    - 80:80
+    - 443:443
+  volumes:
+    - /var/www/biz-balance:/var/www/biz-balance
