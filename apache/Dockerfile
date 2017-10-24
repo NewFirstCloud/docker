@@ -63,7 +63,7 @@ EXPOSE 80
 EXPOSE 443
 
 # open to mount
-VOLUME ["/var/www/", "/var/log/apache"]
+# VOLUME ["/var/www/", "/var/log/apache"]
 
 #CMD     ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 #CMD service apache2 start && tail -F /var/log/apache/error.log

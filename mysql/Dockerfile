@@ -26,7 +26,7 @@ ENV VOLUME_HOME "/var/lib/mysql"
 EXPOSE 3306
  
 # open to mount
-VOLUME ["/var/lib/mysql", "/var/log/mysql"]
+# VOLUME ["/var/lib/mysql", "/var/log/mysql"]
  
 # start container
 CMD ["/bin/bash", "/startup.sh"]

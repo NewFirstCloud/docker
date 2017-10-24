@@ -1,3 +1,10 @@
+# docker installieren
+
+```bash
+> systemctl start docker
+> systemctl enable docker
+```
+
 # docker for biz-balance
 
 Stellt eine Docker-Umgebung zum Betrieb von biz-balance bereit.
