@@ -58,6 +58,8 @@ COPY	config/vhosts /etc/apache2/sites-enabled
 COPY	config/ssl /etc/ssl
 COPY	config/php /etc/php5/apache2/conf.d
 
+RUN mkdir -p /var/www/biz-balance
+
 # expose Apache port to a network
 EXPOSE 80
 EXPOSE 443
@@ -67,4 +69,5 @@ EXPOSE 443
 
 #CMD     ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 #CMD service apache2 start && tail -F /var/log/apache/error.log
-ENTRYPOINT service apache2 start && /bin/bash
+#ENTRYPOINT service apache2 start && /bin/bash
+RUN service apache2 restart
