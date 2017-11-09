@@ -69,5 +69,5 @@ EXPOSE 443
 
 #CMD     ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 #CMD service apache2 start && tail -F /var/log/apache/error.log
-#ENTRYPOINT service apache2 start && /bin/bash
-RUN service apache2 restart
+ENTRYPOINT service apache2 start && /bin/bash
+#RUN service apache2 restart

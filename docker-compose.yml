@@ -28,3 +28,4 @@ services:
       - biz_balance-mysql
 #    links:
 #      - biz_balance-mysql
+    tty: true
