@@ -6,19 +6,12 @@ services:
 
   biz_balance-mysql:
     build: ./mysql
-#    image: docker_biz_balance-mysql
-#    container_name: biz_balance-mysql
-    expose:
-     - 3306
-#    ports:
-#      - 3306:3306
     volumes:
       - /srv/mysql:/var/lib/mysql
+    tty: true
 
   biz_balance-apache:
     build: ./apache
-#    image: docker_biz_balance-apache
-#    container_name: biz_balance-apache
     ports:
       - 80:80
       - 443:443
@@ -26,6 +19,6 @@ services:
       - /srv/www:/var/www/biz-balance
     depends_on:
       - biz_balance-mysql
-#    links:
-#      - biz_balance-mysql
+    links:
+      - biz_balance-mysql:mysql
     tty: true

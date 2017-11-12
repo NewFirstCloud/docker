@@ -3,6 +3,7 @@ FROM debian:jessie
 LABEL maintainer="service@biz-balance.de"
 
 RUN apt-get update
+
 # Common packages
 RUN apt-get update && \
     apt-get install -y --force-yes curl wget
@@ -64,10 +65,4 @@ RUN mkdir -p /var/www/biz-balance
 EXPOSE 80
 EXPOSE 443
 
-# open to mount
-# VOLUME ["/var/www/", "/var/log/apache"]
-
-#CMD     ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-#CMD service apache2 start && tail -F /var/log/apache/error.log
-ENTRYPOINT service apache2 start && /bin/bash
-#RUN service apache2 restart
+ENTRYPOINT service memcached start && service apache2 start && /bin/bash
