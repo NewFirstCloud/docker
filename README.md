@@ -1,6 +1,10 @@
 # docker installieren
 
 ```bash
+> apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+> curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+> add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
+> apt-get install docker-ce
 > systemctl start docker
 > systemctl enable docker
 ```
@@ -10,9 +14,5 @@
 Stellt eine Docker-Umgebung zum Betrieb von biz-balance bereit.
 
 ```bash
-> docker build -t apache22php53 .
-> docker run -ti -d -p 2253:80 -p 443:443 -v /var/www/biz-balance:/var/www/biz-balance --name biz-balance apache22php53 /bin/bash
-> docker exec -ti biz-balance /bin/bash
-> docker container ls
-
+> docker.sh
 ```
