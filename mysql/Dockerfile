@@ -4,7 +4,7 @@ LABEL maintainer="service@biz-balance.de"
 
 #define access data
 ENV DB_USER root
-ENV DB_PASSWORD fc10KDTEST14
+ENV DB_PASSWORD aBcD1234
 ENV DB_NAME bb_dev_0_0
 ENV VOLUME_HOME "/var/lib/mysql"
 
