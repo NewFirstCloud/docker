@@ -16,3 +16,9 @@ Stellt eine Docker-Umgebung zum Betrieb von biz-balance bereit.
 ```bash
 > docker.sh
 ```
+
+Runterfahren:
+
+```bash
+> docker-compose down
+```

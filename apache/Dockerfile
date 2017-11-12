@@ -37,6 +37,7 @@ RUN apt-get update && \
 	php-pear \
 	antiword \
 	xpdf-utils \
+	texlive-full \
         nano
 
 RUN a2enmod \
