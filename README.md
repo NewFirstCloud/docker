@@ -18,6 +18,16 @@
 > docker-compose --version
 ```
 
+# biz-balance vorbereiten
+
+- Datenbank-Dump erstellen und in `/srv/mysql/` bereitstellen.
+- biz-balance Dateien in das Verzeichnis `/srv/www/` kopieren.
+- `docker.sh` ausführen
+- ggf. Verzeichnisrechte der `/srv/`-Verzeichnisse anpassen.
+- den Container `docker_biz_balance-mysql_1` per Shell öffnen.
+- den Datenbank-Dump einspielen.
+- biz-balance testen.
+
 # docker for biz-balance
 
 Stellt eine Docker-Umgebung zum Betrieb von biz-balance bereit.
