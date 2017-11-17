@@ -31,3 +31,10 @@ Runterfahren:
 ```bash
 > docker-compose down
 ```
+
+In die Shell des Containers wechseln:
+
+```bash
+> docker exec -it docker_biz_balance-apache_1 bash
+> docker exec -it docker_biz_balance-mysql_1 bash
+```
