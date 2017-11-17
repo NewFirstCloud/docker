@@ -59,7 +59,7 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 COPY	config/vhosts /etc/apache2/sites-enabled
 COPY	config/ssl /etc/ssl
 COPY	config/php /etc/php5/apache2/conf.d
-COPY	config/root_bbCron.sh /root/root_bbCron.sh
+COPY	config/root_bbCron.sh /root/bbCron.sh
 COPY    config/cron /etc/cron.d/biz-balance
 
 RUN chmod 755 /root/root_bbCron.sh
