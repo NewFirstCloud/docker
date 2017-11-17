@@ -10,6 +10,14 @@
 > systemctl enable docker
 ```
 
+# docker-compose installieren
+
+```bash
+> curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+> chmod +x /usr/local/bin/docker-compose
+> docker-compose --version
+```
+
 # docker for biz-balance
 
 Stellt eine Docker-Umgebung zum Betrieb von biz-balance bereit.
