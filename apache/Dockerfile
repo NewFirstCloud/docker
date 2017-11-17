@@ -62,7 +62,7 @@ COPY	config/php /etc/php5/apache2/conf.d
 COPY	config/root_bbCron.sh /root/bbCron.sh
 COPY    config/cron /etc/cron.d/biz-balance
 
-RUN chmod 755 /root/root_bbCron.sh
+RUN chmod 755 /root/bbCron.sh
 
 RUN mkdir -p /var/www/biz-balance
 
