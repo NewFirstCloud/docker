@@ -8,6 +8,8 @@ services:
     build: ./mysql
     volumes:
       - /srv/mysql:/var/lib/mysql
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
     tty: true
 
   biz_balance-apache:
