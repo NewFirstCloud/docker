@@ -17,6 +17,8 @@ services:
       - 443:443
     volumes:
       - /srv/www:/var/www/biz-balance
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
     depends_on:
       - biz_balance-mysql
     links:
