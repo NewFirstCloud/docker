@@ -22,6 +22,8 @@
 
 - Datenbank-Dump erstellen und in `/srv/mysql/` bereitstellen.
 - biz-balance Dateien in das Verzeichnis `/srv/www/` kopieren.
+- in der Datei `./apache/config/bb_cron_systems.bbcron` den Datenbank-Namen `bb_dev_0_0` durch den richtigen Namen ersetzen.
+- in der Datei `./mysql/Dockerfile` den Datenbank-Namen, den -Benutzer und das -Passwort ersetzten. Wichtig: Datenbank-Benutzer ist __nicht__ `root`, sondern `bb_<name>` 
 - `docker.sh` ausführen
 - ggf. Verzeichnisrechte der `/srv/`-Verzeichnisse anpassen.
 - den Container `docker_biz_balance-mysql_1` per Shell öffnen.
