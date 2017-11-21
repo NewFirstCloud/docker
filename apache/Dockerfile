@@ -61,6 +61,7 @@ COPY	config/ssl /etc/ssl
 COPY	config/php /etc/php5/apache2/conf.d
 COPY	config/root_bbCron.sh /root/bbCron.sh
 COPY    config/cron /etc/cron.d/biz-balance
+COPY    config/bb_cron_systems.bbcron /tmp/bb_cron_systems.bbcron
 
 RUN chmod 755 /root/bbCron.sh
 
