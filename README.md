@@ -27,7 +27,7 @@
 - `docker.sh` ausführen
 - ggf. Verzeichnisrechte der `/srv/`-Verzeichnisse anpassen.
 - den Container `docker_biz_balance-mysql_1` per Shell öffnen.
-- den Datenbank-Dump einspielen.
+- den Datenbank-Dump einspielen (ggf. `dpkg-reconfigure mysql-server-5.5` auf dem Container durchführen, wenn der Zugriff verweigert wird).
 - biz-balance testen: Cronjobs, PDF-Generierung (alt / neu), E-Mail senden (inkl. Anhänge) / empfangen.
 
 # docker for biz-balance
