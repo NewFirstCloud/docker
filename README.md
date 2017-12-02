@@ -33,6 +33,7 @@
 - den Datenbank-Dump einspielen (ggf. `dpkg-reconfigure mysql-server-5.5` auf dem Container durchführen, wenn der Zugriff verweigert wird).
 - Datenbanktabelle `cron_jobs_x_server` leeren: `TRUNCATE `cron_jobs_x_server`;`
 - biz-balance testen: Cronjobs, PDF-Generierung (alt / neu), E-Mail senden (inkl. Anhänge) / empfangen.
+- anschließend das Verzeichnis `.git` und den Bereich `biz-balance vorbereiten` aus der `README.md` löschen 
 
 ```bash
 > mysqldump -h localhost -u root -p -c --databases bb_dev_0_0 --skip-opt --add-drop-table --add-locks --create-options --quick --quote-names --result-file=./bb_dev_0_0.sql
@@ -43,10 +44,6 @@
 
 > rsync --stats --progress --exclude=profiles --exclude=tmp -r -l -H -z /srv/saas_agency/ root@192.0.0.2:/srv/www/
 > rsync --stats --progress -r -l -H -z /srv/profiles/bb_dev_0_0 root@192.0.0.2:/srv/www/profiles/
-
-> openssl genrsa -out biz_balance.key 2048
-> openssl req -new -key biz_balance.key -out biz_balance.csr
-> openssl x509 -req -days 3650 -in biz_balance.csr -signkey biz_balance.key -out biz_balance.pem
 ```
 
 # docker for biz-balance
@@ -68,4 +65,12 @@ In die Shell des Containers wechseln:
 ```bash
 > docker exec -it docker_biz_balance-apache_1 bash
 > docker exec -it docker_biz_balance-mysql_1 bash
+```
+
+Neue Zertifikate erstellen:
+
+```bash
+> openssl genrsa -out biz_balance.key 2048
+> openssl req -new -key biz_balance.key -out biz_balance.csr
+> openssl x509 -req -days 3650 -in biz_balance.csr -signkey biz_balance.key -out biz_balance.pem
 ```
