@@ -24,10 +24,11 @@
 - biz-balance Dateien in das Verzeichnis `/srv/www/` kopieren.
 - in der Datei `./apache/config/bb_cron_systems.bbcron` den Datenbank-Namen `bb_dev_0_0` durch den richtigen Namen ersetzen.
 - in der Datei `./mysql/Dockerfile` den Datenbank-Namen, den -Benutzer und das -Passwort ersetzten. Wichtig: Datenbank-Benutzer ist __nicht__ `root`, sondern `bb_<name>` 
-- `docker.sh` ausführen
+- neue Zertifikate im Verzeichnis `./apache/config/ssl/` erstellen oder durch eigene Zertifikate ersetzen.
 - ggf. Verzeichnisrechte der `/srv/`-Verzeichnisse anpassen.
 - `mandaten.stg` mit den neuen Daten erstellen und austauschen.
 - in der `config.inc` den Pfad für das `ROOT_DIR` auf `/var/www/biz-balance/` korrigieren.
+- `docker.sh` ausführen
 - den Container `docker_biz_balance-mysql_1` per Shell öffnen.
 - den Datenbank-Dump einspielen (ggf. `dpkg-reconfigure mysql-server-5.5` auf dem Container durchführen, wenn der Zugriff verweigert wird).
 - biz-balance testen: Cronjobs, PDF-Generierung (alt / neu), E-Mail senden (inkl. Anhänge) / empfangen.
@@ -41,6 +42,10 @@
 
 > rsync --stats --progress --exclude=profiles --exclude=tmp -r -l -H -z /srv/saas_agency/ root@192.0.0.2:/srv/www/
 > rsync --stats --progress -r -l -H -z /srv/profiles/bb_dev_0_0 root@192.0.0.2:/srv/www/profiles/
+
+> openssl genrsa -out biz_balance.key 2048
+> openssl req -new -key biz_balance.key -out biz_balance.csr
+> openssl x509 -req -days 3650 -in biz_balance.csr -signkey biz_balance.key -out biz_balance.pem
 ```
 
 # docker for biz-balance
