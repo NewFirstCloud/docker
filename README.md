@@ -26,6 +26,8 @@
 - in der Datei `./mysql/Dockerfile` den Datenbank-Namen, den -Benutzer und das -Passwort ersetzten. Wichtig: Datenbank-Benutzer ist __nicht__ `root`, sondern `bb_<name>` 
 - `docker.sh` ausführen
 - ggf. Verzeichnisrechte der `/srv/`-Verzeichnisse anpassen.
+- `mandaten.stg` mit den neuen Daten erstellen und austauschen.
+- in der `config.inc` den Pfad für das `ROOT_DIR` auf `/var/www/biz-balance/` korrigieren.
 - den Container `docker_biz_balance-mysql_1` per Shell öffnen.
 - den Datenbank-Dump einspielen (ggf. `dpkg-reconfigure mysql-server-5.5` auf dem Container durchführen, wenn der Zugriff verweigert wird).
 - biz-balance testen: Cronjobs, PDF-Generierung (alt / neu), E-Mail senden (inkl. Anhänge) / empfangen.
