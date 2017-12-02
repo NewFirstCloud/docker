@@ -31,6 +31,7 @@
 - `docker.sh` ausführen
 - den Container `docker_biz_balance-mysql_1` per Shell öffnen.
 - den Datenbank-Dump einspielen (ggf. `dpkg-reconfigure mysql-server-5.5` auf dem Container durchführen, wenn der Zugriff verweigert wird).
+- Datenbanktabelle `cron_jobs_x_server` leeren: `TRUNCATE `cron_jobs_x_server`;`
 - biz-balance testen: Cronjobs, PDF-Generierung (alt / neu), E-Mail senden (inkl. Anhänge) / empfangen.
 
 ```bash
