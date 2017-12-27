@@ -46,7 +46,7 @@
 > mysqldump -h localhost -u root -p -c --databases bb_dev_0_0 --skip-opt --add-drop-table --add-locks --create-options --quick --quote-names --result-file=./bb_dev_0_0.sql
 > gzip ./bb_dev_0_0.sql
 > scp ./bb_dev_0_0.sql.gz root@192.0.0.2:/srv/mysql/
-> unzip ./bb_dev_0_0.sql.gz
+> gunzip ./bb_dev_0_0.sql.gz
 > mysql -u root --default-character-set=utf8 bb_dev_0_0 < /var/lib/mysql/bb_dev_0_0.sql
 ```
 
