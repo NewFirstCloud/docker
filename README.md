@@ -36,12 +36,21 @@
 - anschließend das Verzeichnis `.git` und den Bereich `biz-balance vorbereiten` aus der `README.md` löschen 
 
 ```bash
+> openssl genrsa -out ./apache/config/ssl/biz_balance.key 2048
+> openssl req -new -key ./apache/config/ssl/biz_balance.key -out ./apache/config/ssl/biz_balance.csr
+> openssl x509 -req -days 3650 -in ./apache/config/ssl/biz_balance.csr -signkey ./apache/config/ssl/biz_balance.key -out ./apache/config/ssl/biz_balance.crt
+> cat ./apache/config/ssl/biz_balance.crt ./apache/config/ssl/biz_balance.key > ./apache/config/ssl/biz_balance.pem
+```
+
+```bash
 > mysqldump -h localhost -u root -p -c --databases bb_dev_0_0 --skip-opt --add-drop-table --add-locks --create-options --quick --quote-names --result-file=./bb_dev_0_0.sql
 > gzip ./bb_dev_0_0.sql
 > scp ./bb_dev_0_0.sql.gz root@192.0.0.2:/srv/mysql/
 > unzip ./bb_dev_0_0.sql.gz
 > mysql -u root --default-character-set=utf8 bb_dev_0_0 < /var/lib/mysql/bb_dev_0_0.sql
+```
 
+```bash
 > rsync --stats --progress --exclude=profiles --exclude=tmp -r -l -H -z /srv/saas_agency/ root@192.0.0.2:/srv/www/
 > rsync --stats --progress -r -l -H -z /srv/profiles/bb_dev_0_0 root@192.0.0.2:/srv/www/profiles/
 ```
