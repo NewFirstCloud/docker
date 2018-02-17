@@ -20,6 +20,7 @@
 
 # biz-balance vorbereiten
 
+- Datenbank-Tabelle `system_statistik` truncaten.
 - Datenbank-Dump erstellen und in `/srv/mysql/` bereitstellen.
 - biz-balance Dateien in das Verzeichnis `/srv/www/` kopieren.
 - in der Datei `./apache/config/bb_cron_systems.bbcron` den Datenbank-Namen `bb_dev_0_0` durch den richtigen Namen ersetzen.
