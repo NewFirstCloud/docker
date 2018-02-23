@@ -1,3 +1,14 @@
+# TODO for Rancher
+
+- biz-balance als docker image mit der aktuellen Version erzeugen. Inkl. der Programmdaten.
+- folgende Verzeichnisse als externe Volumens:
+  - /var/www/profiles
+  - /var/www/tmp
+  - /var/www/certs
+- Die apache-config so anpassen, dass die Zertifikate auf eine Freigabe zeigt, z. B. `/var/www/certs`.
+- Docker image für biz-balance-mysql bauen mit externen Volume für die Datenbanken-Daten.
+- Docker-Compose File anpassen für rancher-nfs
+
 # docker installieren
 
 ```bash
@@ -43,6 +54,16 @@
 > cat ./apache/config/ssl/biz_balance.crt ./apache/config/ssl/biz_balance.key > ./apache/config/ssl/biz_balance.pem
 ```
 
+Datenbank von Statistiken bereinigen:
+```bash
+> mysql -uroot -p
+> use bb_dev_0_0;
+> TRUNCATE system_statistik;
+> TRUNCATE system_statistik_categories;
+
+```
+
+Datenbank-Dump erstellen:
 ```bash
 > mysqldump -h localhost -u root -p -c --databases bb_dev_0_0 --skip-opt --add-drop-table --add-locks --create-options --quick --quote-names --result-file=./bb_dev_0_0.sql
 > gzip ./bb_dev_0_0.sql
