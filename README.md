@@ -90,7 +90,9 @@ In die Shell des Containers wechseln:
 Neue Zertifikate erstellen:
 
 ```bash
-> openssl genrsa -out biz_balance.key 2048
-> openssl req -new -key biz_balance.key -out biz_balance.csr
-> openssl x509 -req -days 3650 -in biz_balance.csr -signkey biz_balance.key -out biz_balance.pem
+> cd ~/docker
+> openssl genrsa -out ./apache/config/ssl/biz_balance.key 2048
+> openssl req -new -key ./apache/config/ssl/biz_balance.key -out ./apache/config/ssl/biz_balance.csr
+> openssl x509 -req -days 3650 -in ./apache/config/ssl/biz_balance.csr -signkey ./apache/config/ssl/biz_balance.key -out ./apache/config/ssl/biz_balance.pem
+> ./docker_rebuild.sh
 ```
